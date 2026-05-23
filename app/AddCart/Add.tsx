@@ -115,16 +115,21 @@ const ProductPage = () => {
 
   const displayedReviews = showAllReviews ? reviews : reviews.slice(0, 3);
 
-  useEffect(() => {
+ useEffect(() => {
+  if (typeof document !== "undefined") {
     if (showOverlay) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [showOverlay]);
+  }
+
+  return () => {
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = "unset";
+    }
+  };
+}, [showOverlay]);
 
   return (
     <>
