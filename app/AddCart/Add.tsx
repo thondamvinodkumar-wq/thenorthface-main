@@ -114,24 +114,14 @@ const ProductPage = () => {
   };
 
   const displayedReviews = showAllReviews ? reviews : reviews.slice(0, 3);
-
- useEffect(() => {
+useEffect(() => {
   if (typeof document !== "undefined") {
-    if (showOverlay) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    const form = document.querySelector("form");
+    const btn = document.querySelector("button");
+
+    // your code here
   }
-
-  return () => {
-    if (typeof document !== "undefined") {
-      document.body.style.overflow = "unset";
-    }
-  };
-}, [showOverlay]);
-
-  return (
+}, []);
     <>
       <Head>
         <title>{product.name} | The North Face</title>
